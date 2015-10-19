@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000;
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-require('./app/routes.js'); //include routes
+
 
 
 var app = express();
@@ -27,7 +27,7 @@ var app = express();
 // replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }; 
 
 //setup mongoose connection
-mongoose.connect("mongodb://localhost/Mapapp");
+mongoose.connect("mongodb://localhost/MeanMapApp");
 
 //mount middleware
 app.use(express.static(__dirname + '/public')); //static components folder
@@ -39,7 +39,7 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'})); //to parse api res
 app.use(methodOverride()); //override requests to the server, override the req.method property
 
 
-
+require('./app/routes.js')(app); //include routes
 app.listen(port);
 console.log('listening on port: ',port);
 

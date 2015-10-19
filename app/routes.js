@@ -25,7 +25,7 @@ module.exports = function(app){
 
   //method for posting a new user to DB
   app.post('/users',function(req,res){
-
+    console.log('here')
     //create a new user using the User model constructor
     var newuser = new User(req.body);
 
@@ -33,6 +33,7 @@ module.exports = function(app){
       if (err) res.send(err);
 
       //respond with the new user
+      console.log('sucess', newuser)
       res.json(req.body);
     });
 

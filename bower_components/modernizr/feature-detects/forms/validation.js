@@ -30,9 +30,8 @@ define(['Modernizr', 'createElement', 'docElement', 'testStyles'], function(Mode
 
     // Prevent form from being submitted
     form.addEventListener('submit', function(e) {
-      // Old Presto based Opera does not validate form, if submit is prevented
-      // although Opera Mini servers use newer Presto.
-      if (!window.opera || window.operamini) {
+      //Opera does not validate form, if submit is prevented
+      if (!window.opera) {
         e.preventDefault();
       }
       e.stopPropagation();

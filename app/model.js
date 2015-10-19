@@ -10,8 +10,8 @@ var UserSchema = new Schema ({
   favlang: {type: String, required: true},
   location: {type: [Number], required: true}, //an array [long,lat] gMaps requires in: [lat,long]
   htmlverified: String,
-  created_at: {type: Date, Default: Date.now()},
-  updated_at: {type: Date, Default: Date.now()}
+  created_at: {type: Date, default: Date.now()},
+  updated_at: {type: Date, default: Date.now()}
 
 });
 
