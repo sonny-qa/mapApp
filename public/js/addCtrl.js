@@ -41,23 +41,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
           }, function errorCallback(response){
             console.log('Error: ', response)
           });
-
-        // // Saves the user data to the db
-        // $http.post('/users', userData)
-        //     .success(function (data) {
-
-        //         // Once complete, clear the form (except location)
-        //         $scope.formData.username = "";
-        //         $scope.formData.gender = "";
-        //         $scope.formData.age = "";
-        //         $scope.formData.favlang = "";
-
-        //         // Refresh the map with new data
-        //         gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-        //     })
-        //     .error(function (data) {
-        //         console.log('Error: ' + data);
-        //     });
+     
     };
 
 });

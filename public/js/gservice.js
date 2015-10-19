@@ -11,11 +11,9 @@ angular.module('gservice', [])
         var locations = [];
 
         // Selected Location (initialize to center of America)
-        var selectedLat = 39.50;
-        var selectedLong = -98.35;
+        var selectedLat = 51.50722;
+        var selectedLong = -0.12750;
 
-        // Functions
-        // --------------------------------------------------------------
         // Refresh the Map with new data. Function will take new latitude and longitude coordinates.
         googleMapService.refresh = function(latitude, longitude){
 
@@ -88,6 +86,7 @@ var initialize = function(latitude, longitude) {
             zoom: 3,
             center: myLatLng
         });
+         console.log('tryinf to map', map,locations)
     }
 
     // Loop through each location in the array and place a marker
