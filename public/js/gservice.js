@@ -1,5 +1,5 @@
 angular.module('gservice', [])
-	.factory('gservice', function($http){
+.factory('gservice', function($http){
 
 		//factory will return object with service methods
 		var googleMapService = {};
@@ -32,11 +32,10 @@ angular.module('gservice', [])
 			position: initiallocation,
 			map: map
 		})
-			
 
-		}
 
-		
+	};
+
 		//listener so that map loads on page load
 		google.maps.event.addDomListener(window, 'load',
 			initialize(selectedLat,selectedLong))

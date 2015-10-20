@@ -19,6 +19,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
     var toolData = {
       description: $scope.formData.desc,
       location: [$scope.formData.longitude, $scope.formData.latitude],
+      address: $scope.formData.address
     };
     console.log('hello')
     //make a $http post request
@@ -32,12 +33,25 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
         $scope.formData.desc = "";
         $scope.formData.longitude = "";
         $scope.formData.latitude = "";
+        $scope.formData.address = "";
 
     }, function errorCb(response){
       console.log('error posting item: ', response)
     });
 
   };
+
+  $scope.geoCode = function(address){
+    
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({'address':address},function(results,status){
+      console.log('hello', results);
+    })
+  };
+
+
+  
 
   //function to create new user collecting form data, triggered when the create user button is clicked
 
