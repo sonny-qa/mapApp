@@ -54,13 +54,29 @@
             <div class="col-md-7">
                 <div id="map"></div>
             </div>
-
+            
             <div class="col-md-5">
-                <h3>Project One</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
+                <div class="panel-heading">
+                    <h2 class="panel-title text-left"> Add a location </h2>
+                </div>
+
+
+                <div class="panel-body">
+                        <form name="addForm" novalidate>
+                            <div class="form-group">
+                                <label for="latitude">Lat</label>
+                                <input type="text" class="form-control" id="latitude" placeholder="50" ng-model="formData.lat">
+                            </div>
+                            <div class="form-group">
+                                <label for="longitude">Lat</label>
+                                <input type="text" class="form-control" id="longitude" placeholder="-0.12" ng-model="formData.long">
+                            </div>
+
+                            <button type="submit" class="btn btn-warning" ng-click="addPoint()"> Add Location </button>
+                        </form>
+                </div>
+            </div>    
+
         </div>
         <!-- /.row -->
 
