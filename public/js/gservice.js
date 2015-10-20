@@ -19,9 +19,11 @@ angular.module('gservice', [])
     	selectedLat = latitude;
     	selectedLong = longitude;
 
+
     	$http.get('/items').success(function(response){
 
     		locations = convertToMapPoints(response);
+    		//console.log('locations',locations)
 
     		initialize(latitude,longitude);
     	}).error(function(){})
@@ -36,19 +38,23 @@ angular.module('gservice', [])
     	//loop over response
     	for (var i=0; i<response.length;i++){
     		var item = response[i];
+    		//console.log('response',response,'item',item.latitude, item.longitude)
 
-    		var contentString = '<p><b>Desc</b>: ' + item.description + '</p>';
+    		var contentString = '<p><b>Description</b>: ' + item.description + '</p>';
 
     		locations.push({
-    			latlon: new google.maps.LatLng(item.latitude, item.longitude),
-    			message: new google.maps.InfoWindow({
-    				content: contentString,
-    				maxWidth: 320
-    			})
+    			lat:item.latitude, lng:item.longitude
+    			//latlon: new google.maps.LatLng(item.latitude, item.longitude),
+    			// message: new google.maps.InfoWindow({
+    			// 	content: contentString,
+    			// 	maxWidth: 320
+    			// })
     		});
+    		//console.log(locations[0])
 
     	}
-
+    	//console.log('locations',locations[0])
+  
     	return locations;
 
     };
@@ -62,18 +68,20 @@ angular.module('gservice', [])
 		        // Create a new map and place in the index.html page
 		        var map = new google.maps.Map(document.getElementById('map'), {
 		        	zoom: 3,
-		        	center: myLatLng
+		        	center: myLatLng,
+		        	visible: true
 		        });
-		    }
+		       }
+		    
+		 
 
 		    locations.forEach(function(item, i){
+		    	//console.log('item: ', item['lng'])
 		    	var marker = new google.maps.Marker({
-		    		position: item.latlon,
+		    		position: item,
 		    		map: map
-
-
 		    	});
-
+		    	console.log(item)
 
         	 	// For each marker created, add a listener that checks for clicks
         	 	google.maps.event.addListener(marker, 'click', function(e){
@@ -93,7 +101,7 @@ angular.module('gservice', [])
 
     		    });
 
-    		   // lastMarker = marker;
+    		   lastMarker = marker;
 
 
     		};
