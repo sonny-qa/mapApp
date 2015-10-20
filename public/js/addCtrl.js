@@ -18,7 +18,8 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
     //function to create a new tool from the form data, triggered when the add button is clicked
     var toolData = {
       description: $scope.formData.desc,
-      location: [$scope.formData.longitude, $scope.formData.latitude],
+      latitude: $scope.formData.latitude,
+      longitude: $scope.formData.longitude, 
       address: $scope.formData.address
     };
     

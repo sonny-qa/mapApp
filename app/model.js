@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 //define users schema
 var ToolSchema = new Schema ({
   description: {type: String},
-  location: {type: [Number]}, //an array [long,lat] gMaps requires in: [lat,long]
+  latitude: {type: Number},
+  longitude: {type: Number}, //an array [long,lat] gMaps requires in: [lat,long]
   address: {type: String},
   created_at: {type: Date, default: Date.now()},
   updated_at: {type: Date, default: Date.now()}
