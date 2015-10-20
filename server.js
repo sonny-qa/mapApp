@@ -39,7 +39,7 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'})); //to parse api res
 app.use(methodOverride()); //override requests to the server, override the req.method property
 
 
-require('./app/routes.js'); //include routes
+require('./app/routes.js')(app); //include routes
 app.listen(port);
 console.log('listening on port: ',port);
 
