@@ -40,7 +40,7 @@ angular.module('gservice', [])
     		var contentString = '<p><b>Desc</b>: ' + item.description + '</p>';
 
     		locations.push({
-    			latlon: new google.maps.LatLng(item.location[1], item.location[0]),
+    			latlon: new google.maps.LatLng(item.latitude, item.longitude),
     			message: new google.maps.InfoWindow({
     				content: contentString,
     				maxWidth: 320

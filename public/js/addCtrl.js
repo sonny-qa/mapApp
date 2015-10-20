@@ -10,10 +10,12 @@ addCtrl.controller('MapController', function ($scope) {
 
     google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
         var place = autocompleteFrom.getPlace();
-        $scope.user.fromLat = place.geometry.location.lat();
-        $scope.user.fromLng = place.geometry.location.lng();
+        $scope.formData.longitude = (place.geometry.location.lat());
+        $scope.formData.latitude = (place.geometry.location.lng());
         //update the scope.user.form with the formatted ddresses suggestions
         $scope.user.from = place.formatted_address;
+       //console.log(place.geometry.location.lat(),place.geometry.location.lng());
+        $scope.$apply();
     });
    
 });
@@ -31,21 +33,31 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
   //initialise map data
   $scope.formData.latitude = 51.50722;
   $scope.formData.longitude = -0.12750;
-
+ 
 
 
   $scope.createPoint = function(){
     //function to create a new tool from the form data, triggered when the add button is clicked
+    var LongStr = $scope.formData.longitude;
+    var LatStr = $scope.formData.latitude;  
+    //console.log('something',LatStr.toString())
+    // LongStr = JSON.stringify(LongStr);
+    // LatStr = JSON.stringify(LatStr);
+
+    console.log(typeof LongStr, typeof LatStr);
+
     var toolData = {
       description: $scope.formData.desc,
-      location: [$scope.formData.longitude, $scope.formData.latitude],
-      address: $scope.formData.address
+      latitude: LatStr,
+      longitude: LongStr
     };
+
+    console.log('data posted',toolData);
     
     //make a $http post request
     $http({
       method: 'POST',
-      url:'/items',
+      url:'/items', 
       data: toolData
 
     }).then(function(data){
@@ -63,7 +75,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
   };
 
   $scope.geoCode = function(address){
-    console.log(address)
+    //console.log(address)
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({'address':address},function(results,status){
