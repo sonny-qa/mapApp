@@ -21,7 +21,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
       location: [$scope.formData.longitude, $scope.formData.latitude],
       address: $scope.formData.address
     };
-    console.log('hello')
+    
     //make a $http post request
     $http({
       method: 'POST',
