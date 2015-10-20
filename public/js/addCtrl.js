@@ -1,7 +1,27 @@
-var addCtrl = angular.module('addCtrl',['geolocation','gservice']);
+var addCtrl = angular.module('addCtrl',['geolocation','gservice','google.places']);
+
+addCtrl.controller('MapController', function ($scope) {
+    //$scope.user = {'from': '', 'fromLat': '', 'fromLng' : ''};
+    var options = {
+        componentRestrictions: {country: "us"}
+    };
+    var inputFrom = document.getElementById('from');
+    var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom, options);
+
+    google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
+        var place = autocompleteFrom.getPlace();
+        $scope.user.fromLat = place.geometry.location.lat();
+        $scope.user.fromLng = place.geometry.location.lng();
+        //update the scope.user.form with the formatted ddresses suggestions
+        $scope.user.from = place.formatted_address;
+    });
+   
+});
 
 //define controller
 addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
+
+  $scope.place = null;
 
   $scope.formData = {};
   var coords = {};
@@ -35,6 +55,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
         $scope.formData.latitude = "";
         $scope.formData.address = "";
 
+
     }, function errorCb(response){
       console.log('error posting item: ', response)
     });
@@ -42,11 +63,11 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
   };
 
   $scope.geoCode = function(address){
-    
+    console.log(address)
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({'address':address},function(results,status){
-      console.log('hello', results);
+      console.log('hellooo',address);
     })
   };
 
