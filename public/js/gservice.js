@@ -7,8 +7,8 @@ angular.module('gservice', [])
 	var locations =[]
 
 	//initialisze map at USA centre
-	var selectedLat = 50;
-	var selectedLong = -0.12;
+	var selectedLat = 37.773972;
+	var selectedLong = -122.431297;
 
     //-----functions-----------------
 
@@ -37,7 +37,7 @@ angular.module('gservice', [])
     	for (var i=0; i<response.length;i++){
     		var item = response[i];
 
-    		var contentString = '<p><b>Desc</b>: ' + item.description + '</p>';
+    		var contentString = '<p><b>Description</b>: ' + item.description + '</p>';
 
     		locations.push({
     			latlon: new google.maps.LatLng(item.latitude, item.longitude),
@@ -61,7 +61,7 @@ angular.module('gservice', [])
 
 		        // Create a new map and place in the index.html page
 		        var map = new google.maps.Map(document.getElementById('map'), {
-		        	zoom: 3,
+		        	zoom: 10,
 		        	center: myLatLng
 		        });
 		    }

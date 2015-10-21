@@ -17,7 +17,7 @@ addCtrl.controller('MapController', function ($scope) {
         $scope.formData.longitude = place.geometry.location.lng();
         
         $scope.user.from = place.formatted_address;
-         $scope.$apply();
+        $scope.$apply();
     });
 });
 
@@ -31,8 +31,8 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
   var long = 0;
 
   //initialise map data
-  $scope.formData.latitude = 51.50722;
-  $scope.formData.longitude = -0.12750;
+  $scope.formData.latitude = 37.7833;
+  $scope.formData.longitude = -122.4167;
 
 
 
@@ -57,6 +57,8 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
         $scope.formData.longitude = "";
         $scope.formData.latitude = "";
         $scope.formData.address = "";
+
+          gservice.refresh(37.7833,-122.4167);
 
     }, function errorCb(response){
       console.log('error posting item: ', response)
