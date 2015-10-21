@@ -12,8 +12,12 @@ addCtrl.controller('MapController', function ($scope) {
         var place = autocompleteFrom.getPlace();
         $scope.user.fromLat = place.geometry.location.lat();
         $scope.user.fromLng = place.geometry.location.lng();
+
+        $scope.formData.latitude = place.geometry.location.lat();
+        $scope.formData.longitude = place.geometry.location.lng();
         
         $scope.user.from = place.formatted_address;
+         $scope.$apply();
     });
 });
 
