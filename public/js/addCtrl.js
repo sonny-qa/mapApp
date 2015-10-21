@@ -1,5 +1,23 @@
 var addCtrl = angular.module('addCtrl',['geolocation','gservice']);
 
+addCtrl.controller('MapController', function ($scope) {
+    //$scope.user = {'from': '', 'fromLat': '', 'fromLng' : ''};
+    var options = {
+        componentRestrictions: {country: "us"}
+    };
+    var inputFrom = document.getElementById('from');
+    var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom, options);
+    
+    google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
+        var place = autocompleteFrom.getPlace();
+        $scope.user.fromLat = place.geometry.location.lat();
+        $scope.user.fromLng = place.geometry.location.lng();
+        
+        $scope.user.from = place.formatted_address;
+    });
+});
+
+
 //define controller
 addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
 
