@@ -42,7 +42,8 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
       description: $scope.formData.desc,
       latitude: $scope.formData.latitude,
       longitude: $scope.formData.longitude, 
-      address: $scope.formData.address
+      address: $scope.formData.address,
+      mfg: $scope.formData.mfg
     };
     
     //make a $http post request
@@ -57,6 +58,7 @@ addCtrl.controller('addCtrl',function($scope, $http, geolocation, gservice){
         $scope.formData.longitude = "";
         $scope.formData.latitude = "";
         $scope.formData.address = "";
+        $scope.formData.mfg ="";
 
           gservice.refresh(37.7833,-122.4167);
 

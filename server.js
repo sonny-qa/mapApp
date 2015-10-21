@@ -13,21 +13,23 @@ var methodOverride = require('method-override');
 var app = express();
 
 //db credentials
-// var dbuser = 'arthur';
-// var dbpassword = 'arthur';
+var dbuser = 'sonny';
+var dbpassword = 'sonny';
 
 
-// var uristring = process.env.MONGOLAB_URI || 
-// process.env.MOGOHQ_URL ||
-// 'mongodb://' + dbuser + ':' + dbpassword + '@ds039674.mongolab.com:39674/heroku_wtk9d4hm';
+var uristring = process.env.MONGOLAB_URI || 
+process.env.MOGOHQ_URL ||'mongodb://' + dbuser + ':' + dbpassword + '@ds035533.mongolab.com:35533/oiltoolnetworkbasic';
 
-// var mongooseUri = uriUtil.formatMongoose(uristring);
+ var mongooseUri = uriUtil.formatMongoose(uristring);
 
-// var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-// replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }; 
+ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }; 
 
 //setup mongoose connection
-mongoose.connect("mongodb://localhost/MeanMapApp");
+//mongoose.connect("mongodb://localhost/MeanMapApp");
+
+//for mongolab
+mongoose.connect(mongooseUri, options);
 
 //mount middleware
 app.use(express.static(__dirname + '/public')); //static components folder
