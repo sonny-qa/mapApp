@@ -1,12 +1,26 @@
 {
     "name": "MeanMapsApp",
     "main": "server.js",
+    "scripts": {
+    "start": "node server.js"
+  },
     "dependencies" : {
         "express"    : "~4.7.2",
         "mongoose"   : "~4.1.0",
         "morgan"     : "~1.2.2",
         "body-parser": "~1.5.2",
         "jsonwebtoken": "^5.0.2",
-        "method-override": "~2.1.2"
-    }
+        "method-override": "~2.1.2",
+        "mongodb-uri": "^0.9.7",
+        "bluebird": "1.0.8",
+        "ejs": "~0.8.5",
+        "express-partials": "~0.2.0",
+        "forever": "^0.10.11",
+        "request": "^2.34.0"
+        }, 
+     "engines": {
+    "node": "0.12.0"
+  }
 }
+
+
