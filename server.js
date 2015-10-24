@@ -31,6 +31,13 @@ replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
 //for mongolab
 mongoose.connect(mongooseUri, options);
 
+
+var db = mongoose.connection;
+
+db.once('open',function(){
+  console.log('connected to : ', mongooseUri);
+})
+
 //mount middleware
 app.use(express.static(__dirname + '/public')); //static components folder
 app.use('/bower_components',express.static(__dirname + '/bower_components'));
